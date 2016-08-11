@@ -4,8 +4,6 @@
 from gimpfu import *
 
 
-
-
 def add_grid_guides(image, drawable, gborders, gcenter, column, row, spacing):
   
   pdb.gimp_context_push()
@@ -53,8 +51,6 @@ def add_grid_guides(image, drawable, gborders, gcenter, column, row, spacing):
 
   pdb.gimp_image_undo_group_end(image)
   pdb.gimp_context_pop()
-
-
 
 
 register(
