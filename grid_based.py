@@ -89,8 +89,8 @@ def add_grid_based(image, drawable, borders, center, column, row, gutter):
     pdb.gimp_image_undo_group_end(image)
     pdb.gimp_context_pop()
     
-register("python-fu-add-grid-based","Grid-based plugin for gimp","Add grid-based layout",
-         "","","","Add grid-based","*",
+register("python-fu-add-grid-based","Create a grid of guides","Create a grid-based layout using guides",
+         "","","","Add grid-based...","*",
          [
           (PF_IMAGE, "image", "Source image", None),
           (PF_DRAWABLE, "drawable", "Source layer", None),
