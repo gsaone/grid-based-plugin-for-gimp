@@ -1,78 +1,69 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# GRID-BASED PLUGIN FOR GIMP
+# Version: 2.0
+# License: GPLv3
+# Author: Sergey Grigorev (issetname@gmail.com)
+# Link project: https://github.com/gsaone/grid-based-plugin-for-gimp
+
 from gimpfu import *
 
-
-def add_grid_guides(image, drawable, gborders, gcenter, column, row, spacing):
-  
-  pdb.gimp_context_push()
-  pdb.gimp_image_undo_group_start(image)
-
-  # add guide borders
-  if gborders:
+def add_border(image):
     guide = pdb.gimp_image_add_vguide(image, 0)
     guide = pdb.gimp_image_add_vguide(image, pdb.gimp_image_width(image))
     guide = pdb.gimp_image_add_hguide(image, 0)
     guide = pdb.gimp_image_add_hguide(image, pdb.gimp_image_height(image))
-
-  # add guide center
-  if gcenter:
+    
+def add_center(image):
     guide = pdb.gimp_image_add_vguide(image, pdb.gimp_image_width(image)/2)
     guide = pdb.gimp_image_add_hguide(image, pdb.gimp_image_height(image)/2)
+    
+def add_table(image, column, row, gutter):
+    if column > 0:
+        size = (pdb.gimp_image_width(image) - (gutter * (column + 1))) / column
+        for count in range(column + 1):
+            if count == 0:
+                guide = pdb.gimp_image_add_vguide(image, gutter)
+            elif count > 0 and count < column:
+                guide = pdb.gimp_image_add_vguide(image, (size + gutter) * count + gutter)
+                guide = pdb.gimp_image_add_vguide(image, (size + gutter) * count)
+            else:
+                guide = pdb.gimp_image_add_vguide(image, (size + gutter) * count)
+    if row > 0:
+        size = (pdb.gimp_image_height(image) - (gutter * (row + 1))) / row
+        for count in range(row + 1):
+            if count == 0:
+                guide = pdb.gimp_image_add_hguide(image, gutter)
+            elif count > 0 and count < row:
+                guide = pdb.gimp_image_add_hguide(image, (size + gutter) * count + gutter)
+                guide = pdb.gimp_image_add_hguide(image, (size + gutter) * count)
+            else:
+                guide = pdb.gimp_image_add_hguide(image, (size + gutter) * count)
 
-  # add guide columns
-  if column > 0:
-    column_size = (pdb.gimp_image_width(image) - (spacing * (column + 1))) / column
-    i = 0
-    while i <= column:
-      if i == 0:
-        guide = pdb.gimp_image_add_vguide(image, spacing)
-      elif i > 0 and i < column:
-        guide = pdb.gimp_image_add_vguide(image, (column_size+spacing)*i+spacing)
-        guide = pdb.gimp_image_add_vguide(image, (column_size+spacing)*i)
-      else:
-        guide = pdb.gimp_image_add_vguide(image, (column_size+spacing)*i)
-      i = i+1
-
-  # add guide rows
-  if row > 0:
-    row_size = (pdb.gimp_image_height(image) - (spacing * (row + 1))) / row
-    i = 0
-    while i <= row:
-      if i == 0:
-        guide = pdb.gimp_image_add_hguide(image, spacing)
-      elif i > 0 and i < row:
-        guide = pdb.gimp_image_add_hguide(image, (row_size+spacing)*i+spacing)
-        guide = pdb.gimp_image_add_hguide(image, (row_size+spacing)*i)
-      else:
-        guide = pdb.gimp_image_add_hguide(image, (row_size+spacing)*i)
-      i = i+1  
-
-  pdb.gimp_image_undo_group_end(image)
-  pdb.gimp_context_pop()
-
-
-register(
-          "python-fu-add-grid-guides",
-          "Add grid guides",
-          "Add grid guides",
-          "Sergey Grigorev",
-          "Sergey Grigorev (issetname@gmail.com)",
-          "11-08-2016",
-          "Add grid guides",
-          "*",
-          [
-              (PF_IMAGE, "image", "Source image", None),
-              (PF_DRAWABLE, "drawable", "Source layer", None),
-              (PF_BOOL,   "gborders", "Borders", False),
-              (PF_BOOL,   "gcenter", "Center", False),
-              (PF_INT, "column", "Column", "0"),
-              (PF_INT, "row", "Row", "0"),
-              (PF_FLOAT, "spacing", "Spacing", "0.0")
-              
-          ],
-          [],
-          add_grid_guides, menu="<Image>/Grid-based/")
-
+def add_grid_based(image, drawable, borders, center, column, row, gutter):
+    pdb.gimp_context_push()
+    pdb.gimp_image_undo_group_start(image)
+    
+    if borders:
+        add_border(image)
+    if center:
+        add_center(image)    
+    add_table(image, column, row, gutter)
+    
+    pdb.gimp_image_undo_group_end(image)
+    pdb.gimp_context_pop()
+    
+register("python-fu-add-grid-based","Grid-based plugin for gimp","Add grid-based layout",
+         "","","","Add grid-based","*",
+         [
+          (PF_IMAGE, "image", "Source image", None),
+          (PF_DRAWABLE, "drawable", "Source layer", None),
+          (PF_BOOL,   "borders", "Borders", False),
+          (PF_BOOL,   "center", "Center", False),
+          (PF_INT, "column", "Column", "0"),
+          (PF_INT, "row", "Row", "0"),
+          (PF_FLOAT, "gutter", "Gutter", "0.0")
+          ],[],
+         add_grid_based, menu="<Image>/Tools/Grid-based/")
 main()
