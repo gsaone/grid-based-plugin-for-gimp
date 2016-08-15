@@ -1,6 +1,10 @@
 # grid-based-plugin-for-gimp
 Grid-based plugin for web design in Gimp.
 
+####CHANGES (v2.0)
+- Plugin placed in the menu `Tools/Grid-based`
+- Optimizing code
+
 ####CURRENT FEATURES
 - Create table guides (columns, rows, spacing)
 - Create guides at borders
