@@ -100,5 +100,5 @@ register("python-fu-add-grid-based","Grid-based plugin for gimp","Add grid-based
           (PF_INT, "row", "Row", "0"),
           (PF_FLOAT, "gutter", "Gutter", "0.0")
           ],[],
-         add_grid_based, menu="<Image>/Tools/Grid-based/")
+         add_grid_based, menu="<Image>/Guides/")
 main()
