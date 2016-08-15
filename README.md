@@ -4,7 +4,7 @@
 Grid-based plugin for web design in Gimp.
 
 ####CHANGES (v3.0)
-- Plugin placed in the menu `Tools/Grid-based`
+- Plugin placed in the menu `Image > Guides > Add grid-based`
 - Optimizing code
 - Added function create guides in full size image or in selection
 
