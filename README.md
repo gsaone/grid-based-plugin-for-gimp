@@ -9,7 +9,7 @@ Grid-based plugin for web design in Gimp.
 - Added function create guides in full size image or in selection
 
 ####CURRENT FEATURES
-- Create table guides (columns, rows, spacing)
+- Create table guides (columns, rows, gutter)
 - Create guides at borders
 - Create guides in center
 - Create guides in full size image or in selection
