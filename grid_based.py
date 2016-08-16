@@ -94,8 +94,8 @@ register("python-fu-add-grid-based","Create a grid of guides","Create a grid-bas
          [
           (PF_IMAGE, "image", "Source image", None),
           (PF_DRAWABLE, "drawable", "Source layer", None),
-          (PF_BOOL,   "borders", "Borders", False),
-          (PF_BOOL,   "center", "Center", False),
+          (PF_BOOL, "borders", "Borders", False),
+          (PF_BOOL, "center", "Center", False),
           (PF_INT, "column", "Column", "0"),
           (PF_INT, "row", "Row", "0"),
           (PF_FLOAT, "gutter", "Gutter", "0.0")
