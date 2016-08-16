@@ -1,4 +1,4 @@
-![Grid-based plugin for Gimp](https://drive.google.com/uc?id=0B9XXnF3rNTBkZ3ByVVdDN1pONFk)
+![Grid-based plugin for Gimp](https://drive.google.com/uc?id=0B9XXnF3rNTBkZ3lvWGRuOFFTZUk)
 
 # grid-based-plugin-for-gimp
 Grid-based plugin for web design in Gimp.
