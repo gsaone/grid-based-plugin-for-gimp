@@ -14,8 +14,6 @@ Grid-based plugin for web design in Gimp.
 - Create guides in center
 - Create guides in full size image or in selection
 
-*Please, mail me to request any new function <issetname@gmail.com>*
-
 ####HOW TO INSTALL IN LINUX
 Unzip the contents of the archive to a directory `~/.gimp-2.x.x/plug-ins/`
 
