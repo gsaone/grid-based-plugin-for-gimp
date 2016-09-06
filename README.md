@@ -16,6 +16,3 @@ Grid-based plugin for web design in Gimp.
 
 ####HOW TO INSTALL IN LINUX
 Unzip the contents of the archive to a directory `~/.gimp-2.x.x/plug-ins/`
-
-####VIDEO
-[![Grid-based plugin for Gimp](http://img.youtube.com/vi/SLiS5oY0VRQ/0.jpg)](http://www.youtube.com/watch?v=SLiS5oY0VRQ)
